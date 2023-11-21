@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabla de Géneros</title>
+    <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h1>Tabla de Géneros</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Género</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% generoData.forEach(genero => { %>
+                <tr>
+                    <td><%= genero.generoId %></td>
+                    <td><%= genero.generoCol %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>

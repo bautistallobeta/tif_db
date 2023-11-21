@@ -1,0 +1,42 @@
+<!-- caratulas.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Listado de Carátulas</title>
+  <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <h1>Listado de Carátulas</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Carátula ID</th>
+        <th>Código Expediente</th>
+        <th>Demandantes</th>
+        <th>Demandados</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% caratulasConExpedientes.forEach(function(caratula) { %>
+        <tr>
+          <td><%= caratula.caratulaId %></td>
+          <td><%= caratula.codigoExp %></td>
+          <td>
+            <% caratula.demandantes.forEach(function(demandante) { %>
+              <p><%= demandante.nombre %> <%= demandante.apellido %> - <%= demandante.cuilCuit %></p>
+            <% }); %>
+          </td>
+          <td>
+            <% caratula.demandados.forEach(function(demandado) { %>
+              <p><%= demandado.nombre %> <%= demandado.apellido %>- <%= demandado.cuilCuit %></p>
+            <% }); %>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  <!-- Otros elementos HTML y scripts si los necesitas -->
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cámaras</title>
+  <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <h1>Cámaras</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Número de Oficina</th>
+        <th>Dirección</th>
+        <th>Jurisdicción</th>
+        <th>Jueces</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% camaras.forEach(function(camara) { %>
+        <tr>
+          <td><%= camara.camaraId %></td>
+          <td><%= camara.nroOficina %></td>
+          <td><%= camara.direcCalle %> <%= camara.direcNum %></td>
+          <td><%= camara.jurisdiccion %></td>
+          <td><a href="/jueces/camara/<%= camara.camaraId %>">Ver Jueces</a></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+</html>

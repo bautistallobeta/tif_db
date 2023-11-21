@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabla de Nacionalidad</title>
+    <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h1>Tabla de Nacionalidad</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nacionalidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% nacionalidadData.forEach(nacionalidad => { %>
+                <tr>
+                    <td><%= nacionalidad.nacionalidadId %></td>
+                    <td><%= nacionalidad.nacionalidadCol %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>

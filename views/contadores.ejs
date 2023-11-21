@@ -1,0 +1,47 @@
+<!-- contador.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Listado de Contadores</title>
+  <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="/javascripts/busquedaContadores.js"></script>
+</head>
+<body>
+  <h1>Listado de Contadores</h1>
+  <form id="searchForm">
+    <input type="text" id="searchInput" placeholder="Ingresa el nombre/apellido">
+    <button type="button" id="searchButton">Buscar</button>
+  </form>
+  <% if(contadores && contadores.length > 0){ %>
+  <table>
+    <thead>
+      <tr>
+        <th>CUIL</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Especialidad</th>
+        <th>Fecha de Ingreso</th>
+        <th>Informes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% contadores.forEach(function(contador) { %>
+        <tr>
+          <td><%= contador.cuil %></td>
+          <td><%= contador.nombreContador %></td>
+          <td><%= contador.apellidoContador %></td>
+          <td><%= contador.especialidad %></td>
+          <td><%= contador.fechaIngreso ? new Date(contador.fechaIngreso).toISOString().split('T')[0] : '' %></td>
+          <td><a href="/contadores/informes/<%= contador.cuil %>">Ver Informes</a></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  <% }else{ %>
+    <h1>No se encontraron contadores</h1>
+    <% } %>
+  <!-- Otros elementos HTML y scripts si los necesitas -->
+</body>
+</html>

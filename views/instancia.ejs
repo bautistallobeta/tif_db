@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabla de Instancia</title>
+    <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h1>Tabla de Instancia</h1>
+    <table >
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Instancia</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% instanciaData.forEach(instancia => { %>
+                <tr>
+                    <td><%= instancia.instanciaId %></td>
+                    <td><%= instancia.instancia %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>

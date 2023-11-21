@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabla de Estado Civil</title>
+    <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h1>Tabla de Estado Civil</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Estado Civil</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% estadoCivilData.forEach(estadoCivil => { %>
+                <tr>
+                    <td><%= estadoCivil.estadoCivilId %></td>
+                    <td><%= estadoCivil.estadoCivilCol %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>

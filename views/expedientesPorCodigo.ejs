@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Tabla de Expedientes</title>
+  <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="/javascripts/busquedaExpedientes.js"></script>
+</head>
+<body>
+  <h1>Tabla de Expedientes</h1>
+  <form id="searchForm" action="/expedientes" method="GET">
+    <input type="text" id="codigoInput" name="codigoExp" placeholder="Ingrese código de expediente">
+    <button type="submit">Buscar por código</button>
+  </form>
+  <% if (expedientes) { %>
+    <table>
+      <thead>
+        <tr>
+          <th>Código Expediente</th>
+          <th>Fecha Ingreso</th>
+          <th>Palabras Claves</th>
+          <th>Fuero</th>
+          <th>Centro Judicial</th>
+          <th>Instancia</th>
+          <th>Estado Expediente</th>
+          <th>Nivel Acceso</th>
+          <th>Camara/Juzgado</th>
+          <th>Juez/es</th>
+          <th>Demandantes</th> <!-- Nueva columna para demandantes -->
+          <th>Demandados</th> <!-- Nueva columna para demandados -->
+          <th>Informe/s</th>
+          <!-- ... -->
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td><%= expedientes.codigoExp %></td>
+            <td><%= expedientes.fechaIngreso ? new Date(expedientes.fechaIngreso).toISOString().split('T')[0] : '' %></td>
+            <td><%= expedientes.palabrasClaves %></td>
+            <td><%= expedientes.nombreFuero %></td>
+            <td><%= expedientes.nombreCentroJudicial %></td>
+            <td><%= expedientes.nombreInstancia %></td>
+            <td><%= expedientes.nombreEstadoExpediente %></td>
+            <td><%= expedientes.nombreNivelAcceso %></td>
+            <td><%= expedientes.direccion %></td>
+            <td><%= expedientes.nombreJueces %></td> <!-- Mostrar el/los jueces -->
+            <td><% expedientes.demandantes.forEach(demandante => {  %>
+                <%= demandante.nombre %> <%=demandante.apellido %> <!-- Mostrar los demandantes -->
+            <% }); %>, </td>
+            
+            <td><% expedientes.demandados.forEach(demandado => {  %>
+                <%= demandado.nombre %> <%=demandado.apellido %> <!-- Mostrar los demandantes -->
+            <% }); %>, </td>
+            <td><a href="/expedientes/informes/<%= expedientes.codigoExp %>">Ver informes</a></td>
+            <!-- ... -->
+          </tr>
+      </tbody>
+    </table>
+  <% } else { %>
+    <h1>No hay expedientes disponibles</h1>
+  <% } %>
+</body>
+</html>

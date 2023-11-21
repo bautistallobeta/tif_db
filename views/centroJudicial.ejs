@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Centros Judiciales</title>
+  <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <h1>Listado de Centros Judiciales</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Dirección</th>
+        <th>Localidad</th>
+        <th>Expedientes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% centrosJudiciales.forEach(function(centro) { %>
+        <tr>
+          <td><%= centro.centroJudicialId %></td>
+          <td><%= centro.nombre %></td>
+          <td><%= centro.direcCalle %> <%= centro.direcNum %></td>
+          <td><%= centro.localidad %></td>
+          <td><a href="/expedientes/centro/<%= centro.centroJudicialId %>">Ver Expedientes</a></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+</html>

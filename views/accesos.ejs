@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Accesos</title>
+  <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <h1>Accesos</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Nivel Acceso ID</th>
+        <th>Acceso</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% accesos.forEach(function(acceso) { %>
+        <tr>
+          <td><%= acceso.nivelAccesoID %></td>
+          <td><%= acceso.acceso %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+</html>

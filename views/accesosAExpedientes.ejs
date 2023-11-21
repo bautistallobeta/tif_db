@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Expedientes Usuarios</title>
+  <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <h1>Expedientes Usuarios</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Código Expediente</th>
+        <th>Username</th>
+        <th>CUIL</th>
+        <th>Fecha de Acceso</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% expedientesUsuarios.forEach(function(expedienteUsuario) { %>
+        <tr>
+          <td><%= expedienteUsuario.codigoExp %></td>
+          <td><%= expedienteUsuario.username %></td>
+          <td><%= expedienteUsuario.cuilCuit %></td>
+          <td><%= expedienteUsuario.fechaAcceso ? new Date(expedienteUsuario.fechaAcceso).toISOString().split('T')[0] : '' %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+</html>

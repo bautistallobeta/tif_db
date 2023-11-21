@@ -1,0 +1,69 @@
+<!-- En views/informes.ejs -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Tabla de Informes</title>
+  <link href="/stylesheets/style.css" rel="stylesheet" type="text/css"> <!-- Ruta al archivo CSS -->
+  <script type="text/javascript" src="/javascripts/busquedaInformes.js"></script>
+</head>
+<body>
+  <h1>Tabla de Informes</h1>
+  <form id="searchForm" action="/informes" method="GET">
+    <input type="text" id="codigoInput" name="codigoInforme" placeholder="Ingrese código de informe" pattern="[0-9]*" 
+      inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')" >
+    <button type="submit">Buscar por código</button>
+  </form>
+    <% if (informes && informes.length > 0 ) { %>
+        
+        <table>
+  <table>
+    <thead>
+      <tr>
+        <th>Informe ID</th>
+        <th>Fecha</th>
+        <th>Tipo</th>
+        <th>Comentarios</th>
+        <th>Archivo Adjunto</th>
+        <th>Estado Informe</th>
+        <th>Contador/es</th>
+        <!-- ... -->
+      </tr>
+    </thead>
+    <tbody>
+      <% informes.forEach(informe => { %>
+        <tr>
+          <td><%= informe.informeId %></td>
+          <td><%= informe.fecha ? new Date(informe.fecha).toISOString().split('T')[0] : '' %></td>
+          <td><%= informe.tipo %></td>
+          <td><%= informe.comentarios %></td>
+          <td><%= informe.archivoAdjunto %></td>
+          <td><%= informe.estadoInforme %></td>
+          <td>
+            <% if(informe.nombresContadores){ %>
+              <ul>
+                  <li><%= informe.nombresContadores %></li>
+              </ul>
+            <% } else { %>
+            <% if (informe.contadores && informe.contadores.length > 0) { %>
+              <ul>
+                <% informe.contadores.forEach(contador => { %>
+                  <li><%= contador.apellido %>, <%= contador.nombre %></li>
+                <% }); %>
+              </ul>
+            <% } else { %>
+              Sin contador asignado
+            <% } }%>
+
+          </td>
+      
+          <!-- ... -->
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  <% } else { %>
+    <h1>No hay informes disponibles</h1>
+  <% } %>
+</body>
+</html>

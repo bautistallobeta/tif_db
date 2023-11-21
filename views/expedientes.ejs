@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Tabla de Expedientes</title>
+  <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="/javascripts/busquedaExpedientes.js"></script>
+</head>
+<body>
+  <h1>Tabla de Expedientes</h1>
+  <form id="searchForm" action="/expedientes" method="GET">
+    <input type="text" id="codigoInput" name="codigoExp" placeholder="Ingrese código de expediente">
+    <button type="submit">Buscar por código</button>
+  </form>
+  <% if (expedientes && expedientes.length > 0) { %>
+    <table>
+      <thead>
+        <tr>
+          <th>Código Expediente</th>
+          <th>Fecha Ingreso</th>
+          <th>Palabras Claves</th>
+          <th>Fuero</th>
+          <th>Centro Judicial</th>
+          <th>Instancia</th>
+          <th>Estado Expediente</th>
+          <th>Nivel Acceso</th>
+          <th>Camara/Juzgado</th>
+          <th>Juez/es</th>
+          <th>Demandantes</th> <!-- Nueva columna para demandantes -->
+          <th>Demandados</th> <!-- Nueva columna para demandados -->
+          <th>Informe/s</th>
+          <!-- ... -->
+        </tr>
+      </thead>
+      <tbody>
+        <% expedientes.forEach(expediente => { %>
+          <tr>
+            <td><%= expediente.codigoExp %></td>
+            <td><%= expediente.fechaIngreso ? new Date(expediente.fechaIngreso).toISOString().split('T')[0] : '' %></td>
+            <td><%= expediente.palabrasClaves %></td>
+            <td><%= expediente.nombreFuero %></td>
+            <td><%= expediente.nombreCentroJudicial %></td>
+            <td><%= expediente.nombreInstancia %></td>
+            <td><%= expediente.nombreEstadoExpediente %></td>
+            <td><%= expediente.nombreNivelAcceso %></td>
+            <td><%= expediente.direccion %></td>
+            <td><%= expediente.nombreJueces %></td> <!-- Mostrar el/los jueces -->
+            <td><%= expediente.demandantes %></td> <!-- Mostrar los demandantes -->
+            <td><%= expediente.demandados %></td> <!-- Mostrar los demandados -->
+            <td><a href="/expedientes/informes/<%= expediente.codigoExp %>">Ver informes</a></td>
+            <!-- ... -->
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  <% } else { %>
+    <h1>No hay expedientes disponibles</h1>
+  <% } %>
+</body>
+</html>

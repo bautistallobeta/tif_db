@@ -1,0 +1,45 @@
+<!-- jueces.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Listado de Jueces</title>
+  <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="/javascripts/busquedaJueces.js"></script>
+</head>
+<body>
+  <h1>Lista de Jueces</h1>
+  <% if(jueces && jueces.length > 0){ %>
+  <table>
+    <thead>
+      <tr>
+        <th>CUIL</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Estado Actual</th>
+        <th>Especialidad</th>
+        <th>Fecha de Asunción</th>
+        <th>Secretario</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% jueces.forEach(function(juez) { %>
+        <tr>
+          <td><%= juez.cuil %></td>
+          <td><%= juez.nombreJuez %></td>
+          <td><%= juez.apellidoJuez %></td>
+          <td><%= juez.estadoActual %></td>
+          <td><%= juez.especialidad %></td>
+          <td><%= juez.fechaAsuncion ? new Date(juez.fechaAsuncion).toISOString().split('T')[0] : '' %></td>
+          <td><%= juez.nombreSecretario %> <%= juez.apellidoSecretario %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  <% }else{ %>
+    <h1>No se encontraron jueces</h1>
+    <% } %>
+  <!-- Otros elementos HTML y scripts si los necesitas -->
+</body>
+</html>

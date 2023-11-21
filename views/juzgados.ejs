@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Juzgados</title>
+  <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <h1>Juzgados</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Número de Oficina</th>
+        <th>Dirección</th>
+        <th>Jurisdicción</th>
+        <th>Juez</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% juzgados.forEach(function(juzgado) { %>
+        <tr>
+          <td><%= juzgado.juzgadoId %></td>
+          <td><%= juzgado.nroOficina %></td>
+          <td><%= juzgado.direcCalle %> <%= juzgado.direcNum %></td>
+          <td><%= juzgado.juridiccion %></td>
+          <td> <%= juzgado.nombre %> <%= juzgado.apellido %> - <%= juzgado.juezId %> </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+</html>

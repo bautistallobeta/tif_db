@@ -1,8 +1,62 @@
+h1{
+  text-align: center;
+  margin: 50px 25px;
+  padding-top: 25px;
+}
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Arial', sans-serif; /* Fuente formal */
+  color: #333; /* Color de texto principal */
+  background-color: #f8f8f8; /* Fondo */
 }
 
-a {
-  color: #00B7FF;
+/* Estilos para la tabla */
+table {
+  width: 90%;
+  margin: 50px auto;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 13px;
 }
+
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 5px;
+  text-align: center; /* Alineación centrada del texto */
+}
+
+table th {
+  background-color: #f2f5f8;
+  color: #333;
+}
+
+/* Estilos para el formulario y elementos internos */
+#searchForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#codigoInput, #searchInput {
+  padding: 8px;
+  font-size: 14px; /* Reducir el tamaño de la fuente */
+  border: 1px solid #ccc;
+  border-radius: 4px; /* Redondea los bordes del campo */
+  outline: none;
+  width: 250px; /* Ajusta el ancho según sea necesario */
+  margin-right: 5px; /* Espacio entre el campo y el botón */
+}
+
+button[type="submit"], button[type="button"] {
+  padding: 8px 16px;
+  font-size: 14px; /* Reducir el tamaño de la fuente */
+  background-color: #3f80ea; /* Azul más apagado */
+  color: white;
+  border: none;
+  border-radius: 4px; /* Redondea los bordes del botón */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Efecto de transición suave */
+}
+
